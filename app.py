@@ -7,10 +7,10 @@ import os
 
 app = Flask(__name__)
 
-# Load the Neural Style Transfer model
+
 model = hub.load("https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2")
 
-# Folder to store images
+
 UPLOAD_FOLDER = "static/images/"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
