@@ -21,8 +21,8 @@ def load_image(img_path):
     img = tf.io.read_file(img_path)
     img = tf.image.decode_image(img, channels=3)
     img = tf.image.convert_image_dtype(img, tf.float32)
-    img = tf.image.resize(img, (400, 400))  # Resize to match the model's input requirement
-    img = tf.expand_dims(img, axis=0)  # Add batch dimension
+    img = tf.image.resize(img, (400, 400))  
+    img = tf.expand_dims(img, axis=0)  
     return img
 
 
@@ -49,7 +49,7 @@ def index():
             stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
 
             # Convert tensor to image
-            output_image = np.array(stylized_image[0] * 255, dtype=np.uint8)  # Fix here
+            output_image = np.array(stylized_image[0] * 255, dtype=np.uint8) 
             output_pil = Image.fromarray(output_image)
             output_pil.thumbnail((500, 500))  # Resize for better display
             output_pil.save(output_path)
