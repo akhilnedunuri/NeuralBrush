@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuralBrush - AI Art Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>NeuralBrush - AI Art Generator</h1>
+        
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label>Upload Content Image:</label>
+            <input type="file" name="content" required>
+
+            <label>Upload Style Image:</label>
+            <input type="file" name="style" required>
+
+            <button type="submit">Generate Image</button>
+        </form>
+
+        {% if content_img and style_img and output_img %}
+        <div class="images">
+            <div>
+                <h3>Content Image</h3>
+                <img src="{{ url_for('static', filename='images/' + content_img) }}" alt="Content Image">
+            </div>
+
+            <div>
+                <h3>Style Image</h3>
+                <img src="{{ url_for('static', filename='images/' + style_img) }}" alt="Style Image">
+            </div>
+
+            <div>
+                <h3>Stylized Image</h3>
+                <img src="{{ url_for('static', filename='images/' + output_img) }}" alt="Stylized Image">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

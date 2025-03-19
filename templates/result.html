@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuralBrush - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stylized Image</h1>
+
+        <div class="image-container">
+            <div>
+                <h3>Content Image</h3>
+                <img src="{{ url_for('static', filename='images/' + content_filename) }}" alt="Content Image">
+            </div>
+
+            <div>
+                <h3>Style Image</h3>
+                <img src="{{ url_for('static', filename='images/' + style_filename) }}" alt="Style Image">
+            </div>
+
+            <div>
+                <h3>Generated Output</h3>
+                <img src="{{ url_for('static', filename='images/' + output_filename) }}" alt="Stylized Image">
+            </div>
+        </div>
+
+        <a href="/">Try Again</a>
+    </div>
+</body>
+</html>
