@@ -17,7 +17,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
 def load_image(img_path):
-    """Load and preprocess the image."""
+    
     img = tf.io.read_file(img_path)
     img = tf.image.decode_image(img, channels=3)
     img = tf.image.convert_image_dtype(img, tf.float32)
@@ -33,7 +33,7 @@ def index():
         style_file = request.files.get("style")
 
         if content_file and style_file:
-            # Save uploaded images
+            
             content_path = os.path.join(app.config["UPLOAD_FOLDER"], "content.jpg")
             style_path = os.path.join(app.config["UPLOAD_FOLDER"], "style.jpg")
             output_path = os.path.join(app.config["UPLOAD_FOLDER"], "stylized.jpg")
@@ -41,11 +41,11 @@ def index():
             content_file.save(content_path)
             style_file.save(style_path)
 
-            # Load images
+            
             content_image = load_image(content_path)
             style_image = load_image(style_path)
 
-            # Generate stylized image
+            
             stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
 
             # Convert tensor to image
